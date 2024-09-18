@@ -1,0 +1,6 @@
+#ifndef DQFULP_SDROP_DEF
+#define DQFULP_SDROP_DEF
+
+#define INVBOX_DROP		10004
+
+#endif
