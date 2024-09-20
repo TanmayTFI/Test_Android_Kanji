@@ -1,3 +1,116 @@
 <resources>
-    <string name="app_name">Test_Android_Kanji</string>
+    <string name="app_name">Darkarta - A Broken Hearts Quest</string>
+    <string name="app_name_full">Darkarta - A Broken Hearts Quest (Full)</string>
+    <string name="app_id" translatable="false">242350050800</string>
+    <string name="app_id_full" translatable="false">345938738506</string>
+    <string name="app_name_mode">- Full</string>
+    <string name="text_paused_cellular">Would you like to enable downloading over cellular connections? Depending on your data plan, this may cost you money.</string>
+    <string name="text_paused_cellular_2">If you choose not to enable downloading over cellular connections, the download will automatically resume when wi-fi is available.</string>
+    <string name="text_button_resume_cellular">Resume download</string>
+    <string name="text_button_wifi_settings">Wi-Fi settings</string>
+    <string name="text_button_pause">Pause Download</string>
+    <string name="text_button_resume">Resume Download</string>
+    <string name="text_button_cancel">Cancel</string>
+    <string name="review_url">http://store.steampowered.com/recommended/recommendgame/601530</string>
+    <string name="survey_url">http://store.steampowered.com/app/601530</string>
+
+    <string name="download_assets">Game needs a few assets to continue, It will connect to Download these missing assets…</string>
+    <string name="connection_start">Connecting and fetching the missing assets…</string>
+    <string name="downloading_assets">Downloading the missing assets…</string>
+    <string name="preparing_assets">Download complete, preparing the assets for game…</string>
+    <string name="download_paused">Download is Paused!</string>
+    <string name="download_error">Download Error!</string>
+    <string name="download_failed">We are not able to download the missing assets…, Please contact support.</string>
+    <string name="download_SD_full">There is not enough memory in your device to complete the download, Please clear enough space and try again.</string>
+    <string name="downloading_close">Quit</string>
+
+    <string name="achievements_exception">There was an issue communicating with achievements.</string>
+    <string name="singin_silently_exception">There was an issue trying to Sign in.</string>
+    <string name="status_exception_error">%1$s (status %2$d). %3$s.</string>
+    <string name="signin_other_error">There was an issue with sign in.  Please try again later.</string>
+    <string name="players_exception">There was an issue communicating with players.</string>
+    <string name="your_progress_will_be_uploaded">Your existing achievements will be uploaded shortly.</string>
+
+    <string name="admod_id">ca-app-pub-5652993570333472~7526609729</string>
+
+    <!--achievement Siddhi-->
+    <string name="achievement_siddhi" translatable="false">CgkIyvq43IgKEAIQAQ</string>
+    <!--achievement Adhimukti-->
+    <string name="achievement_adhimukti" translatable="false">CgkIyvq43IgKEAIQAg</string>
+    <!--achievement Na Sucita-->
+    <string name="achievement_na_sucita" translatable="false">CgkIyvq43IgKEAIQAw</string>
+    <!--achievement Na Sucita 3-->
+    <string name="achievement_na_sucita_3" translatable="false">CgkIyvq43IgKEAIQCA</string>
+    <!--achievement Na Sucita 5-->
+    <string name="achievement_na_sucita_5" translatable="false">CgkIyvq43IgKEAIQCQ</string>
+    <!--achievement Na Sucita 10-->
+    <string name="achievement_na_sucita_10" translatable="false">CgkIyvq43IgKEAIQFw</string>
+    <!--achievement Guru-->
+    <string name="achievement_guru" translatable="false">CgkIyvq43IgKEAIQBg</string>
+    <!--achievement Prarambha-->
+    <string name="achievement_prarambha" translatable="false">CgkIyvq43IgKEAIQBw</string>
+    <!--achievement Vayu-->
+    <string name="achievement_vayu" translatable="false">CgkIyvq43IgKEAIQBA</string>
+    <!--achievement Vayu 2-->
+    <string name="achievement_vayu_2" translatable="false">CgkIyvq43IgKEAIQCg</string>
+    <!--achievement Vayu 3-->
+    <string name="achievement_vayu_3" translatable="false">CgkIyvq43IgKEAIQCw</string>
+    <!--achievement Agni-->
+    <string name="achievement_agni" translatable="false">CgkIyvq43IgKEAIQBQ</string>
+    <!--achievement Agni 2-->
+    <string name="achievement_agni_2" translatable="false">CgkIyvq43IgKEAIQDA</string>
+    <!--achievement Agni 3-->
+    <string name="achievement_agni_3" translatable="false">CgkIyvq43IgKEAIQGg</string>
+    <!--achievement Udghatin-->
+    <string name="achievement_udghatin" translatable="false">CgkIyvq43IgKEAIQDQ</string>
+    <!--achievement Upalambhaka-->
+    <string name="achievement_upalambhaka" translatable="false">CgkIyvq43IgKEAIQDg</string>
+    <!--achievement Sita-->
+    <string name="achievement_sita" translatable="false">CgkIyvq43IgKEAIQDw</string>
+    <!--achievement Matr Raksa-->
+    <string name="achievement_matr_raksa" translatable="false">CgkIyvq43IgKEAIQEA</string>
+    <!--achievement Drastta-->
+    <string name="achievement_drastta" translatable="false">CgkIyvq43IgKEAIQEQ</string>
+    <!--achievement Garuda-->
+    <string name="achievement_garuda" translatable="false">CgkIyvq43IgKEAIQEg</string>
+    <!--achievement Samaya-->
+    <string name="achievement_samaya" translatable="false">CgkIyvq43IgKEAIQEw</string>
+    <!--achievement Pathaka-->
+    <string name="achievement_pathaka" translatable="false">CgkIyvq43IgKEAIQFA</string>
+    <!--achievement Vigraha-->
+    <string name="achievement_vigraha" translatable="false">CgkIyvq43IgKEAIQFQ</string>
+    <!--achievement Drona-->
+    <string name="achievement_drona" translatable="false">CgkIyvq43IgKEAIQFg</string>
+    <!--achievement Arjuna-->
+    <string name="achievement_arjuna" translatable="false">CgkIyvq43IgKEAIQGA</string>
+    <!--achievement Sama kanta-->
+    <string name="achievement_sama_kanta" translatable="false">CgkIyvq43IgKEAIQGQ</string>
+    <!--achievement Nirmoktr-->
+    <string name="achievement_nirmoktr" translatable="false">CgkIyvq43IgKEAIQGw</string>
+    <!--achievement Chanakya-->
+    <string name="achievement_chanakya" translatable="false">CgkIyvq43IgKEAIQHA</string>
+    <!--achievement Ma Cara-->
+    <string name="achievement_ma_cara" translatable="false">CgkIyvq43IgKEAIQHQ</string>
+    <!--achievement HOP Pati-->
+    <string name="achievement_hop_pati" translatable="false">CgkIyvq43IgKEAIQHg</string>
+    <!--achievement Tartariti-->
+    <string name="achievement_tartariti" translatable="false">CgkIyvq43IgKEAIQHw</string>
+    <!--achievement Karma-->
+    <string name="achievement_karma" translatable="false">CgkIyvq43IgKEAIQIA</string>
+    <!--achievement Karma 2-->
+    <string name="achievement_karma_2" translatable="false">CgkIyvq43IgKEAIQIQ</string>
+    <!--achievement Devarupin-->
+    <string name="achievement_devarupin" translatable="false">CgkIyvq43IgKEAIQIg</string>
+    <!--achievement Avara Cara-->
+    <string name="achievement_avara_cara" translatable="false">CgkIyvq43IgKEAIQIw</string>
+    <!--achievement Kaushik-->
+    <string name="achievement_kaushik" translatable="false">CgkIyvq43IgKEAIQJA</string>
+    <!--achievement Pathika-->
+    <string name="achievement_pathika" translatable="false">CgkIyvq43IgKEAIQJQ</string>
+    <!--achievement Rakshak-->
+    <string name="achievement_rakshak" translatable="false">CgkIyvq43IgKEAIQJg</string>
+    <!--achievement Damaka-->
+    <string name="achievement_damaka" translatable="false">CgkIyvq43IgKEAIQJw</string>
+    <!--achievement Raksaka-->
+    <string name="achievement_raksaka" translatable="false">CgkIyvq43IgKEAIQKA</string>
 </resources>
