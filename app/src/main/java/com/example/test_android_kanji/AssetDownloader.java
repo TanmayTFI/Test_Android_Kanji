@@ -169,7 +169,7 @@ public class AssetDownloader extends AppCompatActivity implements FetchObserver<
         if(reason == Reason.DOWNLOAD_COMPLETED)
         {
             File oldName = new File(this.getObbDir()+ "/" + Uri.parse(url).getLastPathSegment());
-            File newName = new File(this.getObbDir()+ "/main." + BuildConfig.VERSION_CODE + ".in.tuttifrutti.darkarta.abhq.full.obb");
+            File newName = new File(this.getObbDir()+ "/main." + BuildConfig.VERSION_CODE + ".com.example.test_android_kanji.obb");
 
             if(oldName.renameTo(newName))
             {
