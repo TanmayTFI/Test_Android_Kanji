@@ -1,5 +1,7 @@
 package com.example.test_android_kanji;
 
+import static com.google.android.gms.common.util.CollectionUtils.listOf;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -39,8 +41,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.text.DecimalFormat;
+import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 import com.example.test_android_kanji.BuildConfig;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
 
 public class AssetDownloader extends AppCompatActivity implements FetchObserver<Download>
 {
@@ -74,13 +81,21 @@ public class AssetDownloader extends AppCompatActivity implements FetchObserver<
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .protocols(Collections.singletonList(Protocol.HTTP_1_1))
+                .build();
+
+
         final FetchConfiguration fetchConfiguration = new FetchConfiguration.Builder(this)
+                .enableLogging(true)
                 .setDownloadConcurrentLimit(4)
                 .setHttpDownloader(new OkHttpDownloader(Downloader.FileDownloaderType.PARALLEL))
                 .build();
         fetch = Fetch.Impl.getInstance(fetchConfiguration);
         enqueueDownload();
-
     }
 
     @Override
@@ -219,7 +234,7 @@ public class AssetDownloader extends AppCompatActivity implements FetchObserver<
 
     private void setProgressView(@NonNull final Status status, final int progress) {
 
-        Log.d("Progress view update", "Setting progress view" + status);
+        Log.d("Progress view update", "Setting progress view " + status);
 
         switch (status) {
             case QUEUED: {

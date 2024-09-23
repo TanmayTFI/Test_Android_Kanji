@@ -44,7 +44,7 @@ public class MainActivity extends KanjiActivity {
     private void DownloadAssets()
     {
 
-        File obbFile = new File(getObbDir(),"main."+ Build.VERSION.CODENAME + ".in.tuttifrutti.darkarta.abhq.full.obb");
+        File obbFile = new File(getObbDir(),"main."+ BuildConfig.VERSION_CODE + ".in.tuttifrutti.darkarta.abhq.full.obb");
         //File obbFile = new File(getObbDir(),"main."+"Test_Version"+ ".in.tuttifrutti.darkarta.abhq.full.obb");
         if (!obbFile.exists())
         {
