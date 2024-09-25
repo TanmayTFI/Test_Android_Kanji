@@ -68,10 +68,10 @@ void SetMyLangauge(int lang)
 					langPrefix ="DE";
                smallLangPrefix ="de";
 					break;
-				case LN_SPANISH:
-					langPrefix ="ES";
-               smallLangPrefix ="es";
-					break;
+				//case LN_SPANISH:
+					//langPrefix ="ES";
+              // smallLangPrefix ="es";
+					//break;
 				case LN_FRENCH:
 					langPrefix ="FR";
                smallLangPrefix ="fr";
@@ -141,7 +141,7 @@ bool IsMyLangaugeLatin()
 		{
 	      	case LN_ENGLISH:
 			case LN_GERMAN:
-			case LN_SPANISH:
+			//case LN_SPANISH:
 			case LN_FRENCH:
 			case LN_ITALIAN:
 			case LN_NEDERLANDS:

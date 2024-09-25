@@ -148,9 +148,9 @@ void GameTextManager::SetMyLangauge(int lang)
 				case LN_GERMAN:
 					langPrefix ="DE";
 					break;
-				case LN_SPANISH:
-					langPrefix ="ES";
-					break;
+				//case LN_SPANISH:
+					//langPrefix ="ES";
+					//break;
 				case LN_FRENCH:
 					langPrefix ="FR";
 					break;
@@ -257,7 +257,7 @@ void GameTextManager::LoadAllGameTexts()
 		case LN_KOREAN:
 		case LN_ENGLISH:
 		case LN_GERMAN:
-		case LN_SPANISH:
+		//case LN_SPANISH:
 		case LN_FRENCH:
 		case LN_ITALIAN:
 		case LN_NEDERLANDS:

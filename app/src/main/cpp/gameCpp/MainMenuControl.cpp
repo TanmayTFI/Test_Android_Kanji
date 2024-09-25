@@ -608,10 +608,10 @@ MainMenuControl::MainMenuControl()
 	esBtn->SetUID("esBtn");
 	MenuScene->PushObject(esBtn);
 
-	esBtnTxt = new CObject();
-	esBtnTxt->LoadInit("LOCALIZED\\LANGUAGE_BUTTONS\\SPANISH.spr", _X, _Y - 1 + (_YOff * 4), eZOrder_OptionsScn + 102);
-	esBtnTxt->SetUID("esBtnTxt");
-	MenuScene->PushObject(esBtnTxt);
+//	esBtnTxt = new CObject();
+//	esBtnTxt->LoadInit("LOCALIZED\\LANGUAGE_BUTTONS\\SPANISH.spr", _X, _Y - 1 + (_YOff * 4), eZOrder_OptionsScn + 102);
+//	esBtnTxt->SetUID("esBtnTxt");
+//	MenuScene->PushObject(esBtnTxt);
 
     itBtn = new CObject();
     itBtn->LoadInit("MNU\\OP\\BTNOK.SPR", _X, _Y + (_YOff*5), eZOrder_OptionsScn + 101);
@@ -1012,7 +1012,7 @@ MainMenuControl::MainMenuControl()
         case LN_ITALIAN:_langTXT = "ITALIAN.spr"; break;
         case LN_NEDERLANDS:_langTXT = "DUTCH.spr"; break;
         case LN_RUSSIAN:_langTXT = "RUSSIAN.spr"; break;
-		case LN_SPANISH:_langTXT = "SPANISH.spr"; break;
+		//case LN_SPANISH:_langTXT = "SPANISH.spr"; break;
         default:_langTXT = "ENGLISH.spr"; break;
     }
 	if (OptionsPopupScene->GetObjectByID("langSelectBtnTxt") == NULL)
@@ -5963,7 +5963,8 @@ void MainMenuControl::HideLanguageSelection()
     itBtnTxt->Show(false);
     ndBtnTxt->Show(false);
     ruBtnTxt->Show(false);
-	esBtnTxt->Show(false);
+    //esBtnTxt->Show(false);
+
 
 	langBackBtn->Show(false);
 	langBackBtnTxt->Show(false);
@@ -5996,6 +5997,7 @@ void MainMenuControl::UpdateLanguageSelection()
 		{
 			if(Control::Input->LBclicked())
 			{
+                //StringTable::SetMyLangauge(GFApp->GetAssetLanguage());
 				/*
 				StringTable::SetMyLangauge(GFApp->GetAssetLanguage());
 
@@ -6040,13 +6042,13 @@ void MainMenuControl::UpdateLanguageSelection()
 	{
 		if (Control::Input->LBclicked())
 		{
-			GFApp->SetAssetLanguage(LN_SPANISH);
-			langRestartBG->SetEnable(true);
-			langRestartOKBtn->SetEnable(true);
-			langRestartOKBtnTxt->SetEnable(true);
-			langRestartText->Show(true);
-			langBackBtn->Show(false);
-			langBackBtnTxt->Show(false);
+			//GFApp->SetAssetLanguage(LN_SPANISH);
+			//langRestartBG->SetEnable(true);
+			//langRestartOKBtn->SetEnable(true);
+			//langRestartOKBtnTxt->SetEnable(true);
+			//langRestartText->Show(true);
+			//langBackBtn->Show(false);
+			//langBackBtnTxt->Show(false);
 		}
 	}
 

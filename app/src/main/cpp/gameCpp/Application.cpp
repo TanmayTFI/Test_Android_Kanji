@@ -834,7 +834,7 @@ Application::Application()
 					case LN_HINDI:
 						fontFileExtname = +".ttf";
 						break;	
-					case LN_SPANISH:
+					//case LN_SPANISH:
 					case LN_GERMAN:
 					case LN_FRENCH:
 					case LN_ITALIAN:

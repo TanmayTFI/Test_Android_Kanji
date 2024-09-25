@@ -863,7 +863,7 @@ CBitmapText::CBitmapText()
 			case LN_HINDI:
 				fontKerning=0.5f;
 				break;
-			case LN_SPANISH:
+			//case LN_SPANISH:
 			case LN_GERMAN:
 			case LN_FRENCH:
 			case LN_ITALIAN:
