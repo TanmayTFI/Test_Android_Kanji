@@ -54,7 +54,7 @@ public class KanjiActivity extends AppCompatActivity implements SensorEventListe
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
-    {    
+    {
         this.requestWindowFeature (Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

@@ -1,0 +1,1 @@
+keytool -exportcert -alias key0 -keystore ~/Android_keystores/tf-android-keystore.jks -list -v

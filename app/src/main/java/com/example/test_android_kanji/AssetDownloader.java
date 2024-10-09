@@ -67,6 +67,8 @@ public class AssetDownloader extends AppCompatActivity implements FetchObserver<
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        FirebaseApp.initializeApp(this);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.asset_downloader);

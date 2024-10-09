@@ -1,0 +1,29 @@
+Alias name: key0
+Creation date: 22 Jan, 2019
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=Ajish G Habib, OU=Games Dev, O=Tuttifrutti Games Private Limited, L=Kochi, ST=Kerala, C=IN
+Issuer: CN=Ajish G Habib, OU=Games Dev, O=Tuttifrutti Games Private Limited, L=Kochi, ST=Kerala, C=IN
+Serial number: 69253773
+Valid from: Tue Jan 22 10:35:29 IST 2019 until: Sat Jan 16 10:35:29 IST 2044
+Certificate fingerprints:
+	 MD5:  64:94:9A:4B:C4:AB:A5:F4:55:28:2C:7F:8E:A0:25:EB
+	 SHA1: 89:48:BF:40:25:EE:EF:F6:CA:16:41:2D:42:0B:24:40:B7:74:E5:EA
+	 SHA256: D9:4C:C4:74:70:D0:C3:C7:01:52:F1:B8:C1:27:25:37:69:9A:D0:F9:43:A0:79:B5:85:29:0B:23:9B:F8:DF:1F
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: DA B0 DE 76 D3 EF 17 D7   21 7E 9B 1D D6 BD 10 AA  ...v....!.......
+0010: 94 4B F5 6D                                        .K.m
+]
+]
+
+
+
