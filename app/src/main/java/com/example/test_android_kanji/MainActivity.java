@@ -37,6 +37,7 @@ public class MainActivity extends KanjiActivity {
 
         FirebaseApp.initializeApp(this);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         syncHints = false;
         DownloadAssets();
     }

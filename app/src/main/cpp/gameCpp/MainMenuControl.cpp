@@ -23,6 +23,7 @@
 #include "SteamManager.h"
 #include "GameTextManager.h"
 #include "AssetsStringTable.h"
+#include "Cheats.h"
 #include <regex>
 
 #ifdef _DEBUG
@@ -5057,7 +5058,8 @@ void MainMenuControl::Update()
 				VFXButton->StopEmit();				
 			}
 		}
-    
+
+#define _CHEATS
 	#ifdef _CHEATS
 	{
 		if( Control::Input->Kdown(K_VK_L_SHIFT) && Control::Input->Kdown(K_VK_E))
@@ -5090,7 +5092,8 @@ void MainMenuControl::Update()
 			#ifndef _RELEASEBUILD
 				CheatLevel = Level_NIL;
 			#endif
-		#else
+        #else
+
 			#ifdef K_WIN32
 				{
 					if( Control::Input->Kdown(K_VK_F8) )
