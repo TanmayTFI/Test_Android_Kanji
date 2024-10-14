@@ -1,6 +1,7 @@
 package com.example.test_android_kanji;
 
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
+//import org.testng.annotations.Test;
 
 import static org.junit.Assert.*;
 

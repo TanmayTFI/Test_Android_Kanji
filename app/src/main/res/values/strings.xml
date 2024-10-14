@@ -1,7 +1,9 @@
 <resources>
+    <string name="asset_statements">[{"relation":["delegate_permission/common.handle_all_urls","delegate_permission/common.get_login_creds"],"target":{"namespace":"android_app","package_name":"com.example.test_android_kanji","sha256_cert_fingerprints":["AB:CC:D6:7E:BD:E7:BE:DC:28:FD:95:03:64:E4:46:E0:BD:8D:BC:09:BA:E4:ED:A0:B6:CD:DC:18:3F:63:AE:9A"]}}]</string>
+    <string name="app_id">test-android-kanji</string>
     <string name="app_name">Darkarta - A Broken Hearts Quest</string>
     <string name="app_name_full">Darkarta - A Broken Hearts Quest (Full)</string>
-    <string name="app_id" translatable="false">242350050800</string>
+<!--    <string name="app_id" translatable="false">242350050800</string>-->
     <string name="app_id_full" translatable="false">345938738506</string>
     <string name="app_name_mode">- Full</string>
     <string name="text_paused_cellular">Would you like to enable downloading over cellular connections? Depending on your data plan, this may cost you money.</string>

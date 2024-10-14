@@ -1,6 +1,9 @@
-//plugins {
-//    alias(libs.plugins.android.application)
-//}
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
+//    id("com.google.gms.google-services")
+    //id("com.google.android.gms.oss-licenses-plugin")
+}
 
 android {
     namespace = "com.example.test_android_kanji"
@@ -8,10 +11,10 @@ android {
 
     signingConfigs {
         getByName("debug") {
-            storeFile = file("keystores/tf-android-keystore.jks")
-            storePassword = "GrapeApplePlum4$@TF"
-            keyPassword = "AppleC@tGrape$4@TF"
-            keyAlias = "key0"
+            storeFile = file("keystores/debug.keystore")
+            //storePassword = "123456"
+            //keyPassword = "123456"
+            keyAlias = "androiddebugkey"
         }
     }
 
@@ -86,8 +89,15 @@ dependencies {
 //    implementation(libs.kotlin.gradle.plugin)
 //    implementation(libs.appcompat.v7)
 //    implementation(libs.kotlin.stdlib)
+
+//    implementation("com.google.android.gms:play-services-oss-licenses:17.1.0")
     implementation(libs.credentials)
     implementation(libs.credentials.play.services.auth)
+    implementation ("androidx.datastore:datastore-preferences-rxjava2:1.1.1")
+    implementation ("io.reactivex.rxjava2:rxjava:2.2.21")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+    implementation (libs.google.googleid)
     implementation(libs.play.services.games.v2)
     implementation(libs.play.services.location)
     implementation(libs.play.services.auth)
@@ -101,5 +111,11 @@ dependencies {
     implementation(libs.play.services.measurement.api)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
+    implementation(libs.monitor)
+    implementation(libs.ext.junit)
+    implementation(libs.datastore.rxjava2)
+    implementation(libs.datastore.preferences.rxjava2)
     testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.testng)
 }
