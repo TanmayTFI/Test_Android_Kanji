@@ -8,7 +8,7 @@
 
 #ifdef _DEBUG
 	#define _CHEATS
-	//#define _PARTICLEEDITORENABLED
+	#define _PARTICLEEDITORENABLED
 	#define _TABINGAMEUI
 #endif // DEBUG
 
