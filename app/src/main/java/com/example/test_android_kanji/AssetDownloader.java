@@ -131,7 +131,7 @@ public class AssetDownloader extends AppCompatActivity implements FetchObserver<
     private String url = "----";
     private void enqueueDownload()
     {
-        url = "http://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";//"http://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";//"https://storage.googleapis.com/heinz_test_storage/assets_full.obb"
+        url = "https://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";//"https://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";//"https://storage.googleapis.com/heinz_test_storage/assets_full.obb"
         final String filePath = this.getObbDir()+ "/" + Uri.parse(url).getLastPathSegment();
 
         Log.d("DL Location", filePath);
@@ -260,7 +260,7 @@ public class AssetDownloader extends AppCompatActivity implements FetchObserver<
                 progressTextView.setText("STATUS UNKNOWN");
                 if(url == "----")
                 {
-                    url = "http://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb"; //"http://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";
+                    url = "https://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb"; //"https://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";
                 }
                 break;
             }

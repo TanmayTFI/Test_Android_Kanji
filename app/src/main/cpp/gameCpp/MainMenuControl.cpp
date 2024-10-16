@@ -24,11 +24,17 @@
 #include "GameTextManager.h"
 #include "AssetsStringTable.h"
 #include <regex>
-
+#include <android/log.h>
+#include <jni.h>
+#include <string>
+#include <android/log.h>
+#include <android/input.h>
+#define LOG_TAG "NativeInputSystem"
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #ifdef _DEBUG
 	#include "SuperLog.h"
 #endif // _DEBUG
-
+#define _CHEATS
 #define MOMLULLABY_MUSIC_ENDTIME 28.06f
 #define MOMLULLABY_MUSIC_KIDREAPPEARS 66.10f
 #define MISSINGLILHONEY_MUSIC_ENDTIME 71.458f
@@ -63,10 +69,12 @@ const std::string MMButtonID[MMB_Max] =
 		//, "UNLOCK_BUTTON"
 	#endif 
 };
+
 enum CheckBoxState{CHECKBOX_ON, CHECKBOX_OFF};
 
 const CPoint CopyrightPos(363.0f, 702.0f, 0.0f);
-
+int CheatLevel;
+int NativeCheatLevel = Level_Nil;
 const CPoint MaskSprPos(0,0,0);
 #define KNOB_STARTX 548.0f
 #define KNOB_ENDX 	830.0f
@@ -148,6 +156,95 @@ const CRectangle UnlockRect(416,559,310,80);//Upsell
 const CRectangle RateRect(839,241,185,67);//Awards
 #endif
 
+// Global variables
+
+static JNIEnv* g_env = nullptr;
+static jobject g_thiz = nullptr;
+static jmethodID g_methodID = nullptr;
+
+// JNI function
+//extern "C"
+//JNIEXPORT void JNICALL
+//Java_com_example_test_1android_1kanji_MainActivity_nativeKeyPress(JNIEnv *env, jobject thiz,
+//                                                                  jint key_code) {
+//    // Store the JNIEnv and jobject for later use
+//    g_env = env;
+//    g_thiz = thiz;
+//
+//    // Get the method ID for nativeKeyPress if we haven't already
+//    if (g_methodID == nullptr) {
+//        jclass cls = env->GetObjectClass(thiz);
+//        g_methodID = env->GetMethodID(cls, "nativeKeyPress", "(I)V");
+//        env->DeleteLocalRef(cls);
+//    }
+//}
+//class InputWrapper {
+//public:
+//    bool Kdown(int key_code) {
+//        LOGI("Kdown called with key_code: %d", key_code);
+//        if (g_env && g_thiz && g_methodID) {
+//            g_env->CallVoidMethod(g_thiz, g_methodID, key_code);
+//            LOGI("Kdown: Key pressed successfully");
+//            return true;  // Assuming the key is always "down" when this is called
+//        }
+//        LOGI("Kdown: Failed to process key. JNI environment not properly set up.");
+//        return false;
+//    }
+//
+//    bool Kpressed(int key_code) {
+//        LOGI("Kpressed called with key_code: %d", key_code);
+//        // For simplicity, we're treating Kpressed the same as Kdown
+//        // You might want to implement a different behavior if needed
+//        bool result = Kdown(key_code);
+//        LOGI("Kpressed: Returning %s", result ? "true" : "false");
+//        return result;
+//    }
+//};
+
+
+// Global instance to mimic Control::Input
+//InputWrapper Input;
+
+////// Function to handle key presses (to be called from your game logic)
+//void handleKeyPress(int key_code) {
+//    switch (key_code) {
+//        case K_VK_1:
+//            CheatLevel = Level_1;
+//            LOGI("Set CheatLevel to Level_1");
+//            break;
+//        case K_VK_2:
+//            CheatLevel = Level_2;
+//            LOGI("Set CheatLevel to Level_2");
+//            break;
+//        case K_VK_3:
+//            CheatLevel = Level_3;
+//            LOGI("Set CheatLevel to Level_3");
+//            break;
+//        case K_VK_4:
+//            CheatLevel = Level_4;
+//            LOGI("Set CheatLevel to Level_4");
+//            break;
+//        case K_VK_5:
+//            CheatLevel = Level_5;
+//            LOGI("Set CheatLevel to Level_5");
+//            break;
+//        case K_VK_6:
+//            CheatLevel = Level_6;
+//            LOGI("Set CheatLevel to Level_6");
+//            break;
+//        case K_VK_7:
+//            CheatLevel = Level_7;
+//            LOGI("Set CheatLevel to Level_7");
+//            break;
+//        case K_VK_8:
+//            CheatLevel = Level_8;
+//            LOGI("Set CheatLevel to Level_8");
+//            break;
+//        default:
+//            LOGI("Unhandled key code: %d", key_code);
+//            break;
+//    }
+//}
 MainMenuControl::MainMenuControl()
 {
 	GFMainMenuCtrl = this;
@@ -5057,7 +5154,6 @@ void MainMenuControl::Update()
 				VFXButton->StopEmit();				
 			}
 		}
-    
 	#ifdef _CHEATS
 	{
 		if( Control::Input->Kdown(K_VK_L_SHIFT) && Control::Input->Kdown(K_VK_E))
@@ -5080,65 +5176,131 @@ void MainMenuControl::Update()
 			SendMessage(ActionProcessed, ID, xQuestMode);
 			return;
 		}
+        LOGI("Cheats 1");
 		#if ( !defined  K_iOS) || ( !defined  K_ANDROID)
+        LOGI("Cheats 2");
 			if( Control::Input->Kdown(K_VK_L_SHIFT) )
-		#endif        
+        #endif
+            LOGI("Cheats 3");
 		{
-			int CheatLevel = Level_Nil;
-			
+			 CheatLevel = Level_Nil;
+
 		#if ( defined  K_iOS) || ( defined  K_ANDROID)
+            LOGI("Cheats 4");
+
 			#ifndef _RELEASEBUILD
+            LOGI("Cheats 5");
 				CheatLevel = Level_NIL;
-			#endif
-		#else
+            #endif
+            LOGI("Cheats 6");
+            LOGI("Enter Cheats");
+
+            if(NativeCheatLevel!=Level_Nil)
+            {
+                CheatLevel = NativeCheatLevel;
+                LOGI("Cheat Level set to native cheat level");
+            }
+//            {
+//                if( Input->Kpressed(static_cast<EKeyboardLayout>(AKEYCODE_8)) )
+//                {
+//                    LOGI("Set CheatLevel to Level_8");
+//                    CheatLevel = Level_8;
+//                }
+//                if( Input->Kpressed(static_cast<EKeyboardLayout>(AKEYCODE_7)) )
+//                {
+//                    LOGI("Set CheatLevel to Level_7");
+//                    CheatLevel = Level_7;
+//                }
+//                else if( Input->Kpressed(static_cast<EKeyboardLayout>(AKEYCODE_6)) )
+//                {
+//                    LOGI("Set CheatLevel to Level_6");
+//                    CheatLevel = Level_6;
+//                }
+//                else if( Input->Kpressed(static_cast<EKeyboardLayout>(AKEYCODE_5)) )
+//                {
+//                    LOGI("Set CheatLevel to Level_5");
+//                    CheatLevel = Level_5;
+//                }
+//                else if( Input->Kpressed(static_cast<EKeyboardLayout>(AKEYCODE_4)) )
+//                {
+//                    LOGI("Set CheatLevel to Level_4");
+//                    CheatLevel = Level_4;
+//                }
+//                else if( Input->Kpressed(static_cast<EKeyboardLayout>(AKEYCODE_3)) )
+//                {
+//                    LOGI("Set CheatLevel to Level_3");
+//                    CheatLevel = Level_3;
+//                }
+//                else if( Input->Kpressed(static_cast<EKeyboardLayout>(AKEYCODE_2)) )
+//                {
+//                    LOGI("Set CheatLevel to Level_2");
+//                    CheatLevel = Level_2;
+//                }
+//                else if( Input->Kpressed(static_cast<EKeyboardLayout>(AKEYCODE_1)) )
+//                {
+//                    LOGI("Set CheatLevel to Level_1");
+//                    CheatLevel = Level_1;
+//                }
+//                else if(Input->Kdown(K_VK_8))
+//                {
+//                    Application::ToggleFullscreen();
+//                }
+//            }
+        #else
+
 			#ifdef K_WIN32
-				{
-					if( Control::Input->Kdown(K_VK_F8) )
-						CheatLevel = Level_8;
-					if( Control::Input->Kdown(K_VK_F7) )
-						CheatLevel = Level_7; 
-					else if( Control::Input->Kdown(K_VK_F6) )
-						CheatLevel = Level_6; 
-					else if( Control::Input->Kdown(K_VK_F5) )
-						CheatLevel = Level_5; 
-					else if( Control::Input->Kdown(K_VK_F4) )
-						CheatLevel = Level_4; 
-					else if( Control::Input->Kdown(K_VK_F3) )
-						CheatLevel = Level_3; 
-					else if( Control::Input->Kdown(K_VK_F2) )
-						CheatLevel = Level_2; 
-					else if( Control::Input->Kdown(K_VK_F1) )
-						CheatLevel = Level_1;
-					else if(Control::Input->Kpressed(K_VK_F10))			
-						Application::ToggleFullscreen();	
-						
-				}
-			#else
-				{
-					if( Control::Input->Kdown(K_VK_8) )
-						CheatLevel = Level_8;
-					if( Control::Input->Kdown(K_VK_7) )
-						CheatLevel = Level_7; 
-					else if( Control::Input->Kdown(K_VK_6) )
-						CheatLevel = Level_6; 
-					else if( Control::Input->Kdown(K_VK_5) )
-						CheatLevel = Level_5; 
-					else if( Control::Input->Kdown(K_VK_4) )
-						CheatLevel = Level_4; 
-					else if( Control::Input->Kdown(K_VK_3) )
-						CheatLevel = Level_3; 
-					else if( Control::Input->Kdown(K_VK_2) )
-						CheatLevel = Level_2; 
-					else if( Control::Input->Kdown(K_VK_1) )
-						CheatLevel = Level_1;
-					else if(Control::Input->Kpressed(K_VK_8))			
-						Application::ToggleFullscreen();	
-				}
+//				{
+//					if( Control::Input->Kdown(K_VK_F8) )
+//						CheatLevel = Level_8;
+//					if( Control::Input->Kdown(K_VK_F7) )
+//						CheatLevel = Level_7;
+//					else if( Control::Input->Kdown(K_VK_F6) )
+//						CheatLevel = Level_6;
+//					else if( Control::Input->Kdown(K_VK_F5) )
+//						CheatLevel = Level_5;
+//					else if( Control::Input->Kdown(K_VK_F4) )
+//						CheatLevel = Level_4;
+//					else if( Control::Input->Kdown(K_VK_F3) )
+//						CheatLevel = Level_3;
+//					else if( Control::Input->Kdown(K_VK_F2) )
+//						CheatLevel = Level_2;
+//					else if( Control::Input->Kdown(K_VK_F1) )
+//                        CheatLevel = Level_1;
+//					else if(Control::Input->Kpressed(K_VK_F10))
+//						Application::ToggleFullscreen();
+//
+//				}
+
+            #else
+            LOGI("Enter in Cheats");
+//				{
+//					if( Control::Input->Kdown(K_VK_8) )
+//						CheatLevel = Level_8;
+//					if( Control::Input->Kdown(K_VK_7) )
+//						CheatLevel = Level_7;
+//					else if( Control::Input->Kdown(K_VK_6) )
+//						CheatLevel = Level_6;
+//					else if( Control::Input->Kdown(K_VK_5) )
+//						CheatLevel = Level_5;
+//					else if( Control::Input->Kdown(K_VK_4) )
+//						CheatLevel = Level_4;
+//					else if( Control::Input->Kdown(K_VK_3) )
+//						CheatLevel = Level_3;
+//					else if( Control::Input->Kdown(K_VK_2) )
+//						CheatLevel = Level_2;
+//					else if( Control::Input->Kdown(K_VK_1) )
+//						CheatLevel = Level_1;
+//					else if(Control::Input->Kpressed(K_VK_8))
+//						Application::ToggleFullscreen();
+//				}
+            }
+
+
 			#endif
-		#endif
+        #endif
 			switch( CheatLevel )	
 			{
-				
+        #define  _DEMOBUILD
 		#ifndef _DEMOBUILD
 				case Level_8 :
 				{
@@ -6479,3 +6641,48 @@ void MainMenuControl::UpdateLanguageSelection()
 		}
 	}
 	#endif
+
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_test_1android_1kanji_MainActivity_nativeKeyPress(JNIEnv *env, jobject thiz,
+                                                                  jint key_code) {
+    // Assuming CheatLevel and Level_X are defined elsewhere in your code
+    switch (key_code) {
+        case AKEYCODE_1:
+            NativeCheatLevel = Level_1;
+            LOGI("Set CheatLevel to Level_1");
+            break;
+        case AKEYCODE_2:
+            NativeCheatLevel = Level_2;
+            LOGI("Set CheatLevel to Level_2");
+            break;
+        case AKEYCODE_3:
+            NativeCheatLevel = Level_3;
+            LOGI("Set CheatLevel to Level_3");
+            break;
+        case AKEYCODE_4:
+            NativeCheatLevel = Level_4;
+            LOGI("Set CheatLevel to Level_4");
+            break;
+        case AKEYCODE_5:
+            NativeCheatLevel = Level_5;
+            LOGI("Set CheatLevel to Level_5");
+            break;
+        case AKEYCODE_6:
+            NativeCheatLevel = Level_6;
+            LOGI("Set CheatLevel to Level_6");
+            break;
+        case AKEYCODE_7:
+            NativeCheatLevel = Level_7;
+            LOGI("Set CheatLevel to Level_7");
+            break;
+        case AKEYCODE_8:
+            NativeCheatLevel = Level_8;
+            LOGI("Set CheatLevel to Level_8");
+            break;
+        default:
+            LOGI("Unhandled key code: %d", key_code);
+            break;
+    }
+}
