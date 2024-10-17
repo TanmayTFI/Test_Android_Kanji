@@ -24,6 +24,15 @@
 #include "GameTextManager.h"
 #include "AssetsStringTable.h"
 #include <regex>
+#include <android/log.h>
+#include <jni.h>
+#include <string>
+#include <android/log.h>
+#include <android/input.h>
+#define LOG_TAG "NativeInputSystem"
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+
+#define _CHEATS
 
 #ifdef _DEBUG
 	#include "SuperLog.h"
@@ -66,7 +75,8 @@ const std::string MMButtonID[MMB_Max] =
 enum CheckBoxState{CHECKBOX_ON, CHECKBOX_OFF};
 
 const CPoint CopyrightPos(363.0f, 702.0f, 0.0f);
-
+int CheatLevel = Level_Nil;
+int NativeCheatLevel = Level_Nil;
 const CPoint MaskSprPos(0,0,0);
 #define KNOB_STARTX 548.0f
 #define KNOB_ENDX 	830.0f
@@ -5080,16 +5090,23 @@ void MainMenuControl::Update()
 			SendMessage(ActionProcessed, ID, xQuestMode);
 			return;
 		}
+
 		#if ( !defined  K_iOS) || ( !defined  K_ANDROID)
-			if( Control::Input->Kdown(K_VK_L_SHIFT) )
-		#endif        
+			//if( Control::Input->Kdown(K_VK_L_SHIFT) )
+        #endif
 		{
-			int CheatLevel = Level_Nil;
+			CheatLevel = Level_Nil;
 			
 		#if ( defined  K_iOS) || ( defined  K_ANDROID)
 			#ifndef _RELEASEBUILD
 				CheatLevel = Level_NIL;
-			#endif
+            #endif
+
+            if(NativeCheatLevel!=Level_Nil)
+            {
+                CheatLevel = NativeCheatLevel;
+                LOGI("Cheat Level set to native cheat level");
+            }
 		#else
 			#ifdef K_WIN32
 				{
@@ -5135,7 +5152,7 @@ void MainMenuControl::Update()
 						Application::ToggleFullscreen();	
 				}
 			#endif
-		#endif
+        #endif
 			switch( CheatLevel )	
 			{
 				
@@ -6479,3 +6496,48 @@ void MainMenuControl::UpdateLanguageSelection()
 		}
 	}
 	#endif
+
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_test_1android_1kanji_MainActivity_nativeKeyPress(JNIEnv *env, jobject thiz,
+                                                                  jint key_code) {
+    // Assuming CheatLevel and Level_X are defined elsewhere in your code
+    switch (key_code) {
+        case AKEYCODE_1:
+            NativeCheatLevel = Level_1;
+            LOGI("Set CheatLevel to Level_1");
+            break;
+        case AKEYCODE_2:
+            NativeCheatLevel = Level_2;
+            LOGI("Set CheatLevel to Level_2");
+            break;
+        case AKEYCODE_3:
+            NativeCheatLevel = Level_3;
+            LOGI("Set CheatLevel to Level_3");
+            break;
+        case AKEYCODE_4:
+            NativeCheatLevel = Level_4;
+            LOGI("Set CheatLevel to Level_4");
+            break;
+        case AKEYCODE_5:
+            NativeCheatLevel = Level_5;
+            LOGI("Set CheatLevel to Level_5");
+            break;
+        case AKEYCODE_6:
+            NativeCheatLevel = Level_6;
+            LOGI("Set CheatLevel to Level_6");
+            break;
+        case AKEYCODE_7:
+            NativeCheatLevel = Level_7;
+            LOGI("Set CheatLevel to Level_7");
+            break;
+        case AKEYCODE_8:
+            NativeCheatLevel = Level_8;
+            LOGI("Set CheatLevel to Level_8");
+            break;
+        default:
+            LOGI("Unhandled key code: %d", key_code);
+            break;
+    }
+}

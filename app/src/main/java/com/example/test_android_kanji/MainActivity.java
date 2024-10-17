@@ -18,6 +18,7 @@ import android.os.Environment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
+import android.view.KeyEvent;
 
 import android.app.AlertDialog;
 
@@ -137,6 +138,7 @@ public class MainActivity extends KanjiActivity {
 
 
     public static boolean syncHints, unlockGame;
+    private native boolean handleKeyEventNative(int keyCode, int action);
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -260,6 +262,26 @@ public class MainActivity extends KanjiActivity {
             e.printStackTrace();
         }
     }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (handleKeyEventNative(keyCode, event.getAction())) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private native void nativeKeyPress(int keyCode);
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            nativeKeyPress(event.getKeyCode());
+            return true;
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+
 
     private String readFromFile(File file) {
 
