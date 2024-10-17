@@ -71,6 +71,7 @@ public class AssetDownloader extends AppCompatActivity implements FetchObserver<
         FirebaseApp.initializeApp(this);
         super.onCreate(savedInstanceState);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.asset_downloader);
         mainView = findViewById(R.id.asset_downloader);
         progressTextView = findViewById(R.id.progressTextView);

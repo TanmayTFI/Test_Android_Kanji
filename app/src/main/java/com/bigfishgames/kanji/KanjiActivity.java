@@ -72,11 +72,13 @@ public class KanjiActivity extends AppCompatActivity implements SensorEventListe
         relativeLayout.addView(view);
        if(mainLayout!=null)
            mainLayout.addView(relativeLayout);
-           else
-            setContentView(relativeLayout,
-                       new RelativeLayout.LayoutParams (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)); // FILL_PARENT is deprecated from API 16, using MATCH_PARENT
-        mOrientationEventListener = null;
-       
+           else {
+           getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+           setContentView(relativeLayout,
+                   new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+       }// FILL_PARENT is deprecated from API 16, using MATCH_PARENT
+           mOrientationEventListener = null;
+
         if (android.os.Build.VERSION.SDK_INT > 8) {
            String strValue;
            

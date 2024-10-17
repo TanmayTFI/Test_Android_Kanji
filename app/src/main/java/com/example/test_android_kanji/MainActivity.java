@@ -150,6 +150,7 @@ public class MainActivity extends KanjiActivity {
 
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         syncHints = false;
 
         AccomplishmentsCompleted = new BitSet(); // initiate the Bitsets
