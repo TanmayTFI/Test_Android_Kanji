@@ -2960,6 +2960,7 @@ void Application::PostUpdate(bool fade)
 			" obj: " + MKSTR(CRenderList::Instance->VisObjSize())+"["+MKSTR(CRenderList::Instance->ObjSize()) +"]" +
 			" tex: " + MKSTR( CTexFactory::Instance->TotalTexSize / 1048576.0f) + " MB" + debugMsg;
 		FPSText->SetText(Status);
+        FPSText->Show(false);
 
 		if(Control::Input->Kpressed(K_VK_F4))
 		{

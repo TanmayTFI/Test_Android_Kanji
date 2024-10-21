@@ -100,16 +100,16 @@ ExtrasMenuControl::ExtrasMenuControl(CObject* maskSpr)
 	ExtrasPopupScene->PushObject(temp);
 
 	comicBtn = new CObject();
-	comicBtn->LoadInit("LOCALIZED\\" + StringTable::GetMyLangauge() + "\\UI\\MNU\\EXTRAS\\COMIC.SPR", 80, 230, ExtrasPopupScene->GetObjectByID("Title")->ZOrder + 10);
-	comicBtn->SetUID("COMICBOOKTXT");
-	comicBtn->SetScale(1);
-	ExtrasPopupScene->PushObject(comicBtn);
+//	comicBtn->LoadInit("LOCALIZED\\" + StringTable::GetMyLangauge() + "\\UI\\MNU\\EXTRAS\\COMIC.SPR", 80, 230, ExtrasPopupScene->GetObjectByID("Title")->ZOrder + 10);
+//	comicBtn->SetUID("COMICBOOKTXT");
+//	comicBtn->SetScale(1);
+//	ExtrasPopupScene->PushObject(comicBtn);
 
-	creditsBtn = new CObject();
-	creditsBtn->LoadInit("LOCALIZED\\" + StringTable::GetMyLangauge() + "\\UI\\MNU\\EXTRAS\\CREDITS.SPR", -350, 235, ExtrasPopupScene->GetObjectByID("Title")->ZOrder + 10);
-	creditsBtn->SetUID("creditsBtn");
-	creditsBtn->SetScale(1);
-	ExtrasPopupScene->PushObject(creditsBtn);
+//	creditsBtn = new CObject();
+//	creditsBtn->LoadInit("LOCALIZED\\" + StringTable::GetMyLangauge() + "\\UI\\MNU\\EXTRAS\\CREDITS.SPR", -350, 235, ExtrasPopupScene->GetObjectByID("Title")->ZOrder + 10);
+//	creditsBtn->SetUID("creditsBtn");
+//	creditsBtn->SetScale(1);
+//	ExtrasPopupScene->PushObject(creditsBtn);
 
 	/*
 	temp = new CObject();
