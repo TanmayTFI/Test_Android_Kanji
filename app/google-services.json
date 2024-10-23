@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "436965655818",
+    "project_id": "test-android-kanji",
+    "storage_bucket": "test-android-kanji.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436965655818:android:594aac94accc4f11b3a6f3",
+        "android_client_info": {
+          "package_name": "com.example.test_android_kanji"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNlnRxZulFcL0JvIJlmWAF3JdZE0UMPwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
