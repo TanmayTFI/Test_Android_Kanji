@@ -10,8 +10,10 @@ import kotlinx.coroutines.CoroutineScope;
 import kotlinx.coroutines.Dispatchers;
 
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.CancellationSignal;
 import android.os.Environment;
@@ -146,6 +148,7 @@ public class MainActivity extends KanjiActivity {
 
         FirebaseApp.initializeApp(this);
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         // Use your app or activity context to instantiate a client instance of
 
 

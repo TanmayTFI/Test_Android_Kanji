@@ -6,6 +6,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -79,7 +80,7 @@ public class AssetDownloader extends AppCompatActivity implements FetchObserver<
         etaTextView = findViewById(R.id.etaTextView);
         downloadSpeedTextView = findViewById(R.id.downloadSpeedTextView);
         progress_Bar = findViewById(R.id.progressBar);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         //storage = FirebaseStorage.getInstance();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -134,7 +135,7 @@ public class AssetDownloader extends AppCompatActivity implements FetchObserver<
     private String url = "----";
     private void enqueueDownload()
     {
-        url = "http://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";//"http://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";//"https://storage.googleapis.com/heinz_test_storage/assets_full.obb"
+        url = "https://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";//"https://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";//"https://storage.googleapis.com/heinz_test_storage/assets_full.obb"
         final String filePath = this.getObbDir()+ "/" + Uri.parse(url).getLastPathSegment();
 
         Log.d("DL Location", filePath);
@@ -263,7 +264,7 @@ public class AssetDownloader extends AppCompatActivity implements FetchObserver<
                 progressTextView.setText("STATUS UNKNOWN");
                 if(url == "----")
                 {
-                    url = "http://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb"; //"http://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";
+                    url = "https://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb"; //"https://www.tuttifrutti.in/DarkartaMobileAssets/assets.obb";
                 }
                 break;
             }
